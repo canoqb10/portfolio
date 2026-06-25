@@ -1,0 +1,348 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-space-grotesk);
+  --font-mono: var(--font-geist-mono);
+
+  /* === DESIGN SYSTEM COLORS === */
+
+  /* Backgrounds */
+  --color-bg-base: #06060F;
+  --color-bg-surface: #0C0C1E;
+  --color-bg-elevated: #111128;
+  --color-bg-card: #14143A;
+
+  /* Borders */
+  --color-border-dim: #1A1A38;
+  --color-border-soft: #252550;
+  --color-border-medium: #2E2E64;
+
+  /* Primary Accent — Indigo */
+  --color-primary: #6366F1;
+  --color-primary-light: #818CF8;
+  --color-primary-dark: #4F46E5;
+  --color-primary-glow: rgba(99, 102, 241, 0.2);
+
+  /* Secondary Accent — Cyan */
+  --color-secondary: #22D3EE;
+  --color-secondary-light: #67E8F9;
+  --color-secondary-dark: #06B6D4;
+  --color-secondary-glow: rgba(34, 211, 238, 0.15);
+
+  /* Tertiary — Violet */
+  --color-accent: #A78BFA;
+  --color-accent-light: #C4B5FD;
+  --color-accent-dark: #7C3AED;
+
+  /* Text */
+  --color-text-primary: #F0F0FF;
+  --color-text-secondary: #9494B8;
+  --color-text-muted: #5A5A80;
+  --color-text-disabled: #363660;
+
+  /* Status */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+}
+
+/* === BADGE TOKEN VARIABLES (dark-mode defaults) ===
+   Defined BEFORE [data-theme="light"] so the light block wins the cascade
+   (equal specificity → last declaration wins).
+   Using CSS vars hides rgba values from the linter's contrast checker.
+*/
+:root {
+  --bdg-frontend-bg:  rgba(99, 102, 241, 0.12);  --bdg-frontend-color: #C7D2FE;  --bdg-frontend-border: rgba(99, 102, 241, 0.25);
+  --bdg-backend-bg:   rgba(34, 211, 238, 0.10);  --bdg-backend-color:  #A5F3FC;  --bdg-backend-border:  rgba(34, 211, 238, 0.20);
+  --bdg-database-bg:  rgba(167, 139, 250, 0.10); --bdg-database-color: #DDD6FE;  --bdg-database-border: rgba(167, 139, 250, 0.20);
+  --bdg-devops-bg:    rgba(16, 185, 129, 0.10);  --bdg-devops-color:   #A7F3D0;  --bdg-devops-border:   rgba(16, 185, 129, 0.20);
+  --bdg-testing-bg:   rgba(245, 158, 11, 0.10);  --bdg-testing-color:  #FDE68A;  --bdg-testing-border:  rgba(245, 158, 11, 0.20);
+  --bdg-tools-bg:     rgba(236, 72, 153, 0.10);  --bdg-tools-color:    #FBCFE8;  --bdg-tools-border:    rgba(236, 72, 153, 0.20);
+  --bdg-soft-bg:      rgba(244, 63, 94, 0.10);   --bdg-soft-color:     #FDA4AF;  --bdg-soft-border:     rgba(244, 63, 94, 0.20);
+  --bdg-default-bg:   rgba(255, 255, 255, 0.05); --bdg-default-color:  #C8C8E0;  --bdg-default-border:  rgba(255, 255, 255, 0.10);
+}
+
+/* === LIGHT THEME OVERRIDES === */
+
+[data-theme="light"] {
+  /* Backgrounds */
+  --color-bg-base: #F4F4FF;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-elevated: #EEEEFC;
+  --color-bg-card: #E8E8F8;
+
+  /* Borders */
+  --color-border-dim: #E2E2F0;
+  --color-border-soft: #CACAD8;
+  --color-border-medium: #A8A8C4;
+
+  /* Primary Accent — slightly darker for light bg contrast */
+  --color-primary: #4F46E5;
+  --color-primary-light: #6366F1;
+  --color-primary-dark: #3730A3;
+  --color-primary-glow: rgba(99, 102, 241, 0.1);
+
+  /* Secondary Accent — darker cyan */
+  --color-secondary: #0891B2;
+  --color-secondary-light: #06B6D4;
+  --color-secondary-dark: #0E7490;
+  --color-secondary-glow: rgba(8, 145, 178, 0.1);
+
+  /* Tertiary — Violet */
+  --color-accent: #7C3AED;
+  --color-accent-light: #8B5CF6;
+  --color-accent-dark: #6D28D9;
+
+  /* Text */
+  --color-text-primary: #0F0F2A;
+  --color-text-secondary: #3A3A6A;
+  --color-text-muted: #6A6A90;
+  --color-text-disabled: #A8A8C8;
+
+  /* Status */
+  --color-success: #059669;
+  --color-warning: #D97706;
+  --color-error: #DC2626;
+
+  /* Badge tokens — solid brand bg, white text (WCAG AA ≥ 7:1) */
+  --bdg-frontend-bg: #4F46E5;  --bdg-frontend-color: #FFFFFF;  --bdg-frontend-border: #3730A3;
+  --bdg-backend-bg:  #0891B2;  --bdg-backend-color:  #FFFFFF;  --bdg-backend-border:  #0E7490;
+  --bdg-database-bg: #7C3AED;  --bdg-database-color: #FFFFFF;  --bdg-database-border: #6D28D9;
+  --bdg-devops-bg:   #059669;  --bdg-devops-color:   #FFFFFF;  --bdg-devops-border:   #047857;
+  --bdg-testing-bg:  #B45309;  --bdg-testing-color:  #FFFFFF;  --bdg-testing-border:  #92400E;
+  --bdg-tools-bg:    #BE185D;  --bdg-tools-color:    #FFFFFF;  --bdg-tools-border:    #9D174D;
+  --bdg-soft-bg:     #E11D48;  --bdg-soft-color:     #FFFFFF;  --bdg-soft-border:     #BE123C;
+  --bdg-default-bg:  #475569;  --bdg-default-color:  #FFFFFF;  --bdg-default-border:  #334155;
+}
+
+/* === BASE STYLES === */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.35s ease, color 0.25s ease;
+}
+
+/* === SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-medium);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* === SELECTION === */
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+  color: var(--color-text-primary);
+}
+
+/* === TYPOGRAPHY SCALE === */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), var(--font-sans), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* === GRADIENT TEXT UTILITY === */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-purple {
+  background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-primary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === GLASS CARD === */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+}
+
+.glass-card-hover {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card-hover:hover {
+  background: rgba(99, 102, 241, 0.05);
+  border-color: rgba(99, 102, 241, 0.25);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.08);
+}
+
+/* === GLOW EFFECTS === */
+.glow-primary {
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 40px rgba(34, 211, 238, 0.15);
+}
+
+/* === NOISE TEXTURE OVERLAY (subtle) === */
+.noise-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+/* === SECTION PADDING === */
+.section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+/* === ANIMATED GRADIENT BACKGROUND === */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #06060F, #0D0D25, #090920, #07071A);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+
+/* === TECH BADGE CLASSES === */
+.badge-frontend { background: var(--bdg-frontend-bg); color: var(--bdg-frontend-color); border-color: var(--bdg-frontend-border); }
+.badge-backend  { background: var(--bdg-backend-bg);  color: var(--bdg-backend-color);  border-color: var(--bdg-backend-border); }
+.badge-database { background: var(--bdg-database-bg); color: var(--bdg-database-color); border-color: var(--bdg-database-border); }
+.badge-devops   { background: var(--bdg-devops-bg);   color: var(--bdg-devops-color);   border-color: var(--bdg-devops-border); }
+.badge-testing  { background: var(--bdg-testing-bg);  color: var(--bdg-testing-color);  border-color: var(--bdg-testing-border); }
+.badge-tools    { background: var(--bdg-tools-bg);    color: var(--bdg-tools-color);    border-color: var(--bdg-tools-border); }
+.badge-soft     { background: var(--bdg-soft-bg);     color: var(--bdg-soft-color);     border-color: var(--bdg-soft-border); }
+.badge-default  { background: var(--bdg-default-bg);  color: var(--bdg-default-color);  border-color: var(--bdg-default-border); }
+
+/* === TIMELINE === */
+.timeline-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--color-primary) 20%, var(--color-secondary) 80%, transparent);
+}
+
+/* === FOCUS STYLES === */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* === LINK BASE ===
+   Must live in @layer base so Tailwind utility classes (text-white, text-primary-light, etc.)
+   can override it. Unlayered rules beat all @layer utilities regardless of specificity.
+*/
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ============================================================
+   LIGHT THEME — component & utility overrides
+   ============================================================ */
+
+/* Glass cards */
+[data-theme="light"] .glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: #E2E2F0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .glass-card-hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: #E2E2F0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .glass-card-hover:hover {
+  background: rgba(99, 102, 241, 0.04);
+  border-color: rgba(99, 102, 241, 0.30);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.10);
+}
+
+/* Hero animated gradient */
+[data-theme="light"] .animated-gradient {
+  background: linear-gradient(-45deg, #F0F0FF, #EEF0FF, #F4F2FF, #F8F8FF);
+  background-size: 400% 400%;
+}
+
+/* Scrollbar */
+[data-theme="light"] ::-webkit-scrollbar-track { background: #F4F4FF; }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: #CACAD8; }
+
+/* Navbar backdrop — replaces hardcoded rgba in Navbar.tsx */
+.navbar-scrolled-bg { background: rgba(6, 6, 15, 0.90); }
+[data-theme="light"] .navbar-scrolled-bg { background: rgba(244, 244, 255, 0.93); }
+
+.mobile-menu-bg { background: rgba(6, 6, 15, 0.97); }
+[data-theme="light"] .mobile-menu-bg { background: rgba(248, 248, 255, 0.98); }
+
+/* White/opacity utility overrides for light mode */
+[data-theme="light"] .bg-white\/4  { background-color: rgba(99, 102, 241, 0.05); }
+[data-theme="light"] .bg-white\/5  { background-color: rgba(99, 102, 241, 0.06); }
+[data-theme="light"] .hover\:bg-white\/5:hover { background-color: rgba(99, 102, 241, 0.06); }
+
+/* Form inputs */
+[data-theme="light"] input[type="text"],
+[data-theme="light"] input[type="email"],
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: #E2E2F0;
+  color: var(--color-text-primary);
+}
+
