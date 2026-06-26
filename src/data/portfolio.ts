@@ -195,7 +195,10 @@ export const experience = [
     id: "technogi",
     company: "Technogi",
     companyShort: "Technogi",
-    role: { en: "Fullstack Developer Sr.", es: "Desarrollador Fullstack Sr." },
+    role: {
+      en: "Fullstack Developer Ssr.",
+      es: "Desarrollador Fullstack Ssr.",
+    },
     period: { en: "June 2017 – June 2022", es: "Junio 2017 – Junio 2022" },
     current: false,
     location: "México City, México",
